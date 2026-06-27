@@ -11,7 +11,9 @@ final class BlockingEngine {
         BlockPageServer.shared.startIfNeeded()
         monitorTimer?.invalidate()
         monitorTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            self?.schedulePoll()
+            MainActor.assumeIsolated {
+                self?.schedulePoll()
+            }
         }
         if let monitorTimer {
             RunLoop.main.add(monitorTimer, forMode: .common)

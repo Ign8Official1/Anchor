@@ -67,7 +67,7 @@ final class LockScreenController {
     private func startFrameTracking() {
         frameTimer?.invalidate()
         frameTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { [weak self] _ in
-            Task { @MainActor in
+            MainActor.assumeIsolated {
                 self?.syncFrame()
             }
         }

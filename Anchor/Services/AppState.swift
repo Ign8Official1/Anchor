@@ -357,8 +357,9 @@ final class AppState: ObservableObject {
     private func startTicking() {
         tickTimer?.invalidate()
         tickTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            guard let self else { return }
-            self.tick()
+            MainActor.assumeIsolated {
+                self?.tick()
+            }
         }
         if let tickTimer {
             RunLoop.main.add(tickTimer, forMode: .common)
