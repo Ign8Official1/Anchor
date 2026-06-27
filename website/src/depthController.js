@@ -41,25 +41,31 @@ export class DepthController {
     }
 
     if (this.depthOverlay) {
-      this.depthOverlay.style.opacity = String(smoothstep(d, 0.05, 0.95) * 0.68);
+      const overlay = smoothstep(d, 0.05, 0.95) * 0.68;
+      const underDepth = smoothstep(d, 0.38, 1);
+      // Keep the underwater video vivid — only a slight extra tint at depth
+      this.depthOverlay.style.opacity = String(overlay * (1 - underDepth * 0.55));
     }
 
     const surfaceFade = 1 - smoothstep(d, 0.28, 0.5);
     if (this.surfaceLayer) this.surfaceLayer.style.opacity = String(surfaceFade);
 
-    const underFade = smoothstep(d, 0.34, 0.56);
+    // Layer 2: fade in fast and stay fully visible
+    const underFade = smoothstep(d, 0.32, 0.42);
     if (this.underwaterLayer) this.underwaterLayer.style.opacity = String(underFade);
 
+    const underDepth = smoothstep(d, 0.4, 1);
     const underScale = 1 + d * 0.08;
     if (this.underwaterVideo) {
       this.underwaterVideo.style.transform = `scale(${underScale})`;
-      const brightness = 0.88 - d * 0.18;
+      // Very gradual darkening — barely noticeable as you scroll deeper
+      const brightness = 1 - underDepth * 0.07;
       this.underwaterVideo.style.filter =
         `saturate(1.08) contrast(1.04) brightness(${brightness})`;
     }
 
     if (this.underwaterMurk) {
-      this.underwaterMurk.style.opacity = String(0.28 + d * 0.42);
+      this.underwaterMurk.style.opacity = String(0.04 + underDepth * 0.1);
     }
 
     const shouldBeUnder = d > 0.4;
