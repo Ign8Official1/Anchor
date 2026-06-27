@@ -14,9 +14,34 @@ It's free. Always will be. Charging people money to help them focus feels wrong 
 
 Site blocking works by redirecting blocked tabs to a local lock screen in the browser. App blocking puts a lock overlay on the window you're trying to open. You'll need to grant Accessibility and Automation permissions in System Settings for that to work.
 
-## Build
+## Download
 
-Needs macOS 13+ and Node (for the ocean visuals).
+**Easiest:** download [Anchor.dmg](https://github.com/Ign8Official1/Anchor/releases/latest/download/Anchor.dmg), open it, drag Anchor to Applications.
+
+**One Terminal command** (downloads and installs for you):
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Ign8Official1/Anchor/main/scripts/install.sh)"
+```
+
+If macOS blocks the first launch, right-click Anchor → Open. No App Store needed.
+
+**Build from source** (Intel Macs or contributors):
+
+```bash
+git clone https://github.com/Ign8Official1/Anchor.git
+cd Anchor
+./build.sh
+open dist/Anchor.app
+```
+
+Releases are built automatically when you push app changes to `main`. First time: **Actions → Release app → Run workflow**.
+
+**Website:** https://ign8official1.github.io/Anchor/
+
+## Build from source
+
+If you already cloned the repo, you can rebuild without cloning again:
 
 ```bash
 ./build.sh
@@ -31,7 +56,11 @@ xcodegen generate
 open Anchor.xcodeproj
 ```
 
-After rebuilding, quit the old app (Cmd+Q) before opening the new one. Permissions may need to be re-granted after each build since it's ad-hoc signed.
+## GitHub Pages (website)
+
+1. On GitHub: **Settings → Pages → Source → GitHub Actions**
+2. Push to `main` — the deploy workflow publishes `website/` automatically
+3. Site URL: https://ign8official1.github.io/Anchor/
 
 ## Permissions
 

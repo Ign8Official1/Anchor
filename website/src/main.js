@@ -6,6 +6,7 @@ import {
   UNDERWATER_VIDEO_SOURCES,
   loadVideoFromSources,
 } from "./videoSources.js";
+import { BUILD_CMD, DOWNLOAD_URL, INSTALL_CMD } from "./download.js";
 import "./styles.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -137,18 +138,33 @@ async function boot() {
     }
   });
 
-  document.getElementById("download-link")?.addEventListener("click", (e) => {
-    const cmd = "./build.sh && open dist/Anchor.app";
-    navigator.clipboard?.writeText(cmd);
-    const link = e.currentTarget;
-    if (link instanceof HTMLAnchorElement) {
-      const original = link.textContent;
-      link.textContent = "Copied build command";
-      setTimeout(() => {
-        link.textContent = original;
-      }, 1800);
-    }
+  document.getElementById("download-link")?.setAttribute("href", DOWNLOAD_URL);
+
+  const installCmd = document.getElementById("install-cmd");
+  if (installCmd) installCmd.textContent = INSTALL_CMD;
+
+  const buildCmd = document.getElementById("build-cmd");
+  if (buildCmd) buildCmd.textContent = BUILD_CMD;
+
+  document.getElementById("copy-install-cmd")?.addEventListener("click", () => {
+    navigator.clipboard?.writeText(INSTALL_CMD.trim());
+    flashButton("copy-install-cmd", "Copied!");
   });
+
+  document.getElementById("copy-build-cmd")?.addEventListener("click", () => {
+    navigator.clipboard?.writeText(BUILD_CMD.trim());
+    flashButton("copy-build-cmd", "Copied!");
+  });
+}
+
+function flashButton(id, message) {
+  const button = document.getElementById(id);
+  if (!(button instanceof HTMLButtonElement)) return;
+  const original = button.textContent;
+  button.textContent = message;
+  setTimeout(() => {
+    button.textContent = original;
+  }, 1800);
 }
 
 boot().catch(console.error);

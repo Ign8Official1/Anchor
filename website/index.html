@@ -8,7 +8,7 @@
       name="description"
       content="Anchor is a macOS app that blocks distracting apps and helps you run focused work sessions."
     />
-    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="icon" href="favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,7 +19,7 @@
   <body>
     <div id="loader" aria-hidden="true">
       <div class="loader-inner">
-        <img src="/favicon.png" alt="" class="loader-mark" width="48" height="48" />
+        <img src="favicon.png" alt="" class="loader-mark" width="48" height="48" />
         <p class="loader-label">Loading</p>
         <div class="loader-bar"><span></span></div>
       </div>
@@ -49,7 +49,7 @@
 
     <header class="nav">
       <a class="nav-brand" href="#top">
-        <img src="/favicon.png" alt="" width="22" height="22" />
+        <img src="favicon.png" alt="" width="22" height="22" />
         <span>Anchor</span>
       </a>
       <nav class="nav-links">
@@ -146,14 +146,31 @@
         <div class="panel-index mono">04</div>
         <div class="cta-inner">
           <h2>Get Anchor for Mac</h2>
-          <p>Requires macOS 13 or later. Works on Apple Silicon and Intel.</p>
-          <a class="btn btn-primary btn-large" href="#download" id="download-link">
+          <p>Free. macOS 13+ · Apple Silicon · No App Store.</p>
+          <a class="btn btn-primary btn-large" id="download-link" href="#">
             Download Anchor
           </a>
-          <p class="fine">
-            Build from source on GitHub:
-            <code>./build.sh && open dist/Anchor.app</code>
-          </p>
+          <ol class="install-steps">
+            <li>Open <strong>Anchor.dmg</strong></li>
+            <li>Drag <strong>Anchor</strong> to Applications</li>
+            <li>Open from Applications — if blocked, right-click → <strong>Open</strong></li>
+          </ol>
+
+          <details class="install-details">
+            <summary>Install with one Terminal command</summary>
+            <pre class="install-cmd mono" id="install-cmd"></pre>
+            <button type="button" class="btn btn-ghost btn-small" id="copy-install-cmd">
+              Copy command
+            </button>
+          </details>
+
+          <details class="install-details">
+            <summary>Build from source</summary>
+            <pre class="install-cmd mono" id="build-cmd"></pre>
+            <button type="button" class="btn btn-ghost btn-small" id="copy-build-cmd">
+              Copy command
+            </button>
+          </details>
         </div>
       </section>
 
