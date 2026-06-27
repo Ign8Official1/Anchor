@@ -1,12 +1,8 @@
-/** Local hero footage — place files in public/videos/ */
+const base = import.meta.env.BASE_URL;
 
-export const SURFACE_VIDEO_SOURCES = [
-  "/videos/surface.mp4",
-];
+export const SURFACE_VIDEO_SOURCES = [`${base}videos/surface.mp4`];
 
-export const UNDERWATER_VIDEO_SOURCES = [
-  "/videos/underwater.mp4",
-];
+export const UNDERWATER_VIDEO_SOURCES = [`${base}videos/underwater.mp4`];
 
 export function loadVideoFromSources(video, sources) {
   if (!video) return Promise.resolve(false);
