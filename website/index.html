@@ -146,26 +146,60 @@
         <div class="panel-index mono">04</div>
         <div class="cta-inner">
           <h2>Get Anchor for Mac</h2>
-          <p>Free. macOS 13+ · Apple Silicon · No App Store.</p>
-          <a class="btn btn-primary btn-large" id="download-link" href="#">
-            Download Anchor
+          <p class="install-compat">
+            Apple Silicon (M1 or newer) · macOS 13 Ventura+ · Free · No App Store
+          </p>
+          <p class="install-lede">
+            Works on most Macs sold since 2020, if you’re on a recent macOS version.
+            Pre-built downloads are Apple Silicon only — Intel Macs need
+            <a href="#build-from-source">build from source</a>.
+          </p>
+
+          <div class="install-recommended">
+            <p class="install-recommended-label">Recommended — runs cleanly for most people</p>
+            <p class="install-recommended-copy">
+              Paste this into <strong>Terminal</strong> and press Enter. For most users it completes
+              with <strong>no errors</strong> — download, install, and launch in one step. It also clears
+              macOS quarantine flags so Anchor is much less likely to be blocked on first open.
+            </p>
+            <p class="install-recommended-note">
+              Open Terminal from Spotlight (<strong>⌘ Space</strong>, type “Terminal”), paste the command,
+              and wait until you see “Done.”
+            </p>
+            <pre class="install-cmd mono" id="install-cmd"></pre>
+            <button type="button" class="btn btn-primary btn-small" id="copy-install-cmd">
+              Copy install command
+            </button>
+          </div>
+
+          <p class="install-or mono">Or download the DMG</p>
+          <a class="btn btn-ghost btn-large" id="download-link" href="#">
+            Download Anchor.dmg
           </a>
+
+          <aside class="install-warning" role="note">
+            <p class="install-warning-title">DMG installs can hit macOS security blocks</p>
+            <p>
+              The DMG works, but macOS often refuses to open apps that aren’t from the App Store —
+              even after you drag Anchor to Applications.
+            </p>
+            <p><strong>If that happens:</strong> in Applications, <strong>right‑click Anchor → Open</strong>,
+              then click <strong>Open</strong> again.</p>
+            <p class="install-warning-fine">
+              Most people have a smoother time with the Terminal command above — it usually runs with
+              no errors. Still stuck? Check
+              <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>.
+            </p>
+          </aside>
+
           <ol class="install-steps">
             <li>Open <strong>Anchor.dmg</strong></li>
             <li>Drag <strong>Anchor</strong> to Applications</li>
-            <li>Open from Applications — if blocked, right-click → <strong>Open</strong></li>
+            <li><strong>Right‑click → Open</strong> the first time (don’t double‑click)</li>
           </ol>
 
-          <details class="install-details">
-            <summary>Install with one Terminal command</summary>
-            <pre class="install-cmd mono" id="install-cmd"></pre>
-            <button type="button" class="btn btn-ghost btn-small" id="copy-install-cmd">
-              Copy command
-            </button>
-          </details>
-
-          <details class="install-details">
-            <summary>Build from source</summary>
+          <details class="install-details" id="build-from-source">
+            <summary>Build from source (Intel Macs)</summary>
             <pre class="install-cmd mono" id="build-cmd"></pre>
             <button type="button" class="btn btn-ghost btn-small" id="copy-build-cmd">
               Copy command

@@ -16,15 +16,21 @@ Site blocking works by redirecting blocked tabs to a local lock screen in the br
 
 ## Download
 
-**Easiest:** download [Anchor.dmg](https://github.com/Ign8Official1/Anchor/releases/latest/download/Anchor.dmg), open it, drag Anchor to Applications.
-
-**One Terminal command** (downloads and installs for you):
+**Recommended — usually easier, fewer errors.** Paste this into Terminal (downloads, installs, and clears macOS quarantine for you):
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Ign8Official1/Anchor/main/scripts/install.sh)"
 ```
 
-If macOS blocks the first launch, right-click Anchor → Open. No App Store needed.
+**Or download the DMG:** [Anchor.dmg](https://github.com/Ign8Official1/Anchor/releases/latest/download/Anchor.dmg) — open it, drag Anchor to Applications.
+
+> **DMG installs can hit macOS security blocks.** Anchor isn’t from the App Store, so double‑clicking can show “can’t be opened” even after a successful install. The Terminal command above avoids most of this. If you used the DMG: **right‑click Anchor → Open** in Applications, then click **Open** again. Still stuck? **System Settings → Privacy & Security → Open Anyway**.
+
+### Compatibility
+
+- **Pre-built release:** Apple Silicon Macs (M1 or newer) running **macOS 13 Ventura or later**
+- That covers **most Macs sold since 2020**, if you keep macOS up to date
+- **Intel Macs:** not supported by the download — [build from source](#build-from-source) instead
 
 **Build from source** (Intel Macs or contributors):
 

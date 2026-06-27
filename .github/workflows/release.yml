@@ -46,16 +46,14 @@ jobs:
         run: |
           VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' Anchor/Info.plist)
           TAG="v${VERSION}"
-          NOTES="**Download Anchor.dmg** — open it, drag Anchor to Applications, done.
-
-          Or one command in Terminal:
+          NOTES="**Recommended:** install with one Terminal command (usually easier, fewer errors):
           \`\`\`bash
           /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Ign8Official1/Anchor/main/scripts/install.sh)\"
           \`\`\`
 
-          Requires macOS 13+ on Apple Silicon. Free, no App Store.
+          **Or download Anchor.dmg** — open it, drag Anchor to Applications. macOS may block the first launch; right-click Anchor → Open if needed.
 
-          First launch: if macOS blocks the app, right-click Anchor → Open."
+          **Compatibility:** Apple Silicon (M1+) · macOS 13 Ventura or later. Covers most Macs sold since 2020. Intel Macs: build from source. Free, no App Store."
 
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" Anchor.dmg Anchor-macOS.zip --clobber
