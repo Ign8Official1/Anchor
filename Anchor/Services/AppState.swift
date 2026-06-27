@@ -357,9 +357,8 @@ final class AppState: ObservableObject {
     private func startTicking() {
         tickTimer?.invalidate()
         tickTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            Task { @MainActor in
-                self?.tick()
-            }
+            guard let self else { return }
+            self.tick()
         }
         if let tickTimer {
             RunLoop.main.add(tickTimer, forMode: .common)
@@ -370,7 +369,7 @@ final class AppState: ObservableObject {
         resetEmergencyPassIfNewWeek()
         sessionClock = .now
 
-        if var session = activeSession {
+        if let session = activeSession {
             if !session.isIndefinite, session.endsAt <= .now {
                 completeSession()
                 evaluateSchedules()
