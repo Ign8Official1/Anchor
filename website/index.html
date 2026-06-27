@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anchor — Focus app for Mac</title>
+    <meta
+      name="description"
+      content="Anchor is a macOS app that blocks distracting apps and helps you run focused work sessions."
+    />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="loader" aria-hidden="true">
+      <div class="loader-inner">
+        <img src="/favicon.png" alt="" class="loader-mark" width="48" height="48" />
+        <p class="loader-label">Loading</p>
+        <div class="loader-bar"><span></span></div>
+      </div>
+    </div>
+
+    <div id="surface-layer" class="media-layer surface-layer" aria-hidden="true">
+      <video id="surface-video" class="surface-video" muted loop playsinline autoplay preload="auto"></video>
+      <div class="hero-sky-glow" aria-hidden="true"></div>
+    </div>
+
+    <div id="underwater-layer" class="media-layer underwater-layer" aria-hidden="true">
+      <video id="underwater-video" class="underwater-video" muted loop playsinline preload="metadata"></video>
+      <div class="underwater-murk"></div>
+    </div>
+
+    <div id="surface-line" class="surface-line" aria-hidden="true"></div>
+    <div id="depth-overlay" class="depth-overlay" aria-hidden="true"></div>
+
+    <div class="depth-meter mono" aria-hidden="true">
+      <span>Depth</span>
+      <div class="depth-track"><div id="depth-line"></div></div>
+      <span id="depth-value">0 m</span>
+    </div>
+
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="nav">
+      <a class="nav-brand" href="#top">
+        <img src="/favicon.png" alt="" width="22" height="22" />
+        <span>Anchor</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#download">Download</a>
+      </nav>
+      <a class="nav-cta" href="#download">Get Anchor</a>
+    </header>
+
+    <main id="top">
+      <section class="hero panel" data-panel="00">
+        <div class="hero-copy">
+          <p class="eyebrow">macOS focus app</p>
+          <h1>
+            <span class="line">Block distractions.</span>
+            <span class="line accent">Do your best work.</span>
+          </h1>
+          <p class="lede">
+            Anchor blocks the apps that pull you off task — social media, chat, games —
+            so you can finish what you started.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#download">Download for Mac</a>
+            <a class="btn btn-ghost" href="#how">How it works</a>
+          </div>
+        </div>
+        <div class="hero-meta">
+          <span>Scroll to go deeper</span>
+          <span class="mono">↓</span>
+        </div>
+      </section>
+
+      <section id="how" class="panel feature" data-panel="01">
+        <div class="panel-index mono">01</div>
+        <div class="panel-body">
+          <h2>Pick what to block.</h2>
+          <p>
+            Choose the Mac apps that break your focus. Anchor keeps them closed
+            while you work. You can also save websites to blocklists for upcoming browser support.
+          </p>
+        </div>
+        <ul class="stat-row">
+          <li><strong>Blocklists</strong><span>Choose apps to block</span></li>
+          <li><strong>Schedules</strong><span>Auto-start sessions</span></li>
+          <li><strong>Firmness</strong><span>How hard to exit</span></li>
+        </ul>
+      </section>
+
+      <section id="features" class="panel feature feature-split" data-panel="02">
+        <div class="panel-index mono">02</div>
+        <div class="panel-grid">
+          <div class="panel-body">
+            <h2>Start a session in one click.</h2>
+            <p>
+              Tap Block Now for immediate focus time, or set a schedule that runs
+              every day. Sessions keep going even if you close the main window.
+            </p>
+          </div>
+          <div class="feature-cards">
+            <article class="card">
+              <span class="mono">Block Now</span>
+              <h3>Start right away</h3>
+              <p>Run a timed session or block until you stop it.</p>
+            </article>
+            <article class="card">
+              <span class="mono">Menu bar</span>
+              <h3>Stays running</h3>
+              <p>Your session continues from the menu bar icon.</p>
+            </article>
+            <article class="card">
+              <span class="mono">Activity</span>
+              <h3>See your progress</h3>
+              <p>Track how much time you spent in focus.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel feature" data-panel="03">
+        <div class="panel-index mono">03</div>
+        <div class="panel-body wide">
+          <h2>Set how strict you want it.</h2>
+          <div class="levels">
+            <div class="level"><span>Gentle</span><p>Pause or end a session anytime.</p></div>
+            <div class="level"><span>Steady</span><p>Short wait before you can snooze.</p></div>
+            <div class="level"><span>Anchored</span><p>Harder to quit, with an emergency pass.</p></div>
+            <div class="level highlight"><span>Strict</span><p>No quit button. Session runs until it ends.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="download" class="panel cta" data-panel="04">
+        <div class="panel-index mono">04</div>
+        <div class="cta-inner">
+          <h2>Get Anchor for Mac</h2>
+          <p>Requires macOS 13 or later. Works on Apple Silicon and Intel.</p>
+          <a class="btn btn-primary btn-large" href="#download" id="download-link">
+            Download Anchor
+          </a>
+          <p class="fine">
+            Build from source on GitHub:
+            <code>./build.sh && open dist/Anchor.app</code>
+          </p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© 2026 Anchor</span>
+        <span class="mono">Custom ocean footage</span>
+      </footer>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

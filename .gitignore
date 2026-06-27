@@ -1,0 +1,14 @@
+dist/
+.build/
+*.xcodeproj
+*.xcworkspace
+
+node_modules/
+website/dist/
+
+.DS_Store
+
+/Lockedvid.mp4
+Video *.mp4
+Underwater Video *.mp4
+dist/fix-icon
